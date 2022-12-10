@@ -17,7 +17,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div class="row jn__welcome__wrapper align-items-center">
+          {/* <div class="row jn__welcome__wrapper align-items-center">
             <div class="col-md-12 col-lg-6 col-sm-12">
               <div class="welcome__juniro__inner">
                 <h3>
@@ -51,7 +51,7 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

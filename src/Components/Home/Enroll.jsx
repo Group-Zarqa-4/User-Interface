@@ -33,7 +33,7 @@ export default function Enroll() {
           <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12">
               <div class="section__title text-center">
-                <h2 class="title__line">Choose Your Classes</h2>
+                <h2 class="title__line">Choose Your Store</h2>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunte magna aliquaet, consectetempora

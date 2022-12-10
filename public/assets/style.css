@@ -6735,10 +6735,26 @@ button.cartbox__item__remove:hover {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-
 .product__cart__wrapper .cart__list li a:hover span {
   color: #fe5629;
 }
+
+.product__cart__wrapper .cart__list li a:active span > .ri-heart {
+  color: #fe5629;
+}
+
+.ri-heart{
+  color: #666666;
+  font-size: 18px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.a:active > .ri-heart{
+  color: #fe5629;
+}
+
+
 
 .product:hover .product__cart__wrapper {
   opacity: 1;

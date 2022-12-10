@@ -60,10 +60,10 @@ function Header() {
                   <nav class="mainmenu__nav">
                     <ul class="mainmenu">
                       <li class="drop">
-                        <Link to="index.html">Home</Link>
+                        <Link to="/">Home</Link>
                       </li>
                       <li class="drop">
-                        <Link to="class-grid.html">Stores</Link>
+                        <Link to="/stores">Stores</Link>
                       </li>
                       <li class="drop">
                         <Link to="event-grid.html">Vidoes</Link>
@@ -72,10 +72,10 @@ function Header() {
                         <Link to="shop-grid.html">Shop</Link>{" "}
                       </li>
                       <li class="drop">
-                        <Link to="blog-grid.html">about us</Link>
+                        <Link to="/about">about us</Link>
                       </li>
                       <li>
-                        <Link to="contact.html">Contact</Link>
+                        <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
                   </nav>

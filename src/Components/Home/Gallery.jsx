@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import booksApi from "../../booksApi.json";
 
 export default function Gallery() {
+  const [books, setBooks] = useState(booksApi);
   return (
     <div>
       <section class="junior__testimonial__area bg-image--2 section-padding--lg">
@@ -103,221 +105,48 @@ export default function Gallery() {
             </div>
           </div>
           <div class="row galler__wrap mt--40">
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="gallery wow fadeInUp">
-                <div class="gallery__thumb">
-                  <a href="google.com">
-                    <img
-                      src="./assets/images/gallery/gallery-1/1.jpg"
-                      alt="gallery ./assets/images"
-                    />
-                  </a>
-                </div>
-                <div class="gallery__hover__inner">
-                  <div class="gallery__hover__action">
-                    <ul class="gallery__zoom">
-                      <li>
-                        <a
-                          href="./assets/images/gallery/big-img/1.jpg"
-                          data-lightbox="grportimg"
-                          data-title="My caption"
-                        >
-                          <i class="fa fa-search"></i>
+            {books.map((book, index) => {
+              if (index <= 5) {
+                return (
+                  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="gallery wow fadeInUp">
+                      <div class="gallery__thumb">
+                        <a href="google.com">
+                          <img
+                            src={book.backgroundImage}
+                            alt="gallery ./assets/images"
+                            style={{ height: "400px" }}
+                          />
                         </a>
-                      </li>
-                      <li>
-                        <a href="gallery-details.html">
-                          <i class="fa fa-link"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <h4 class="gallery__title">
-                      <a href="google.com">Creating Funny Things</a>
-                    </h4>
+                      </div>
+                      <div class="gallery__hover__inner">
+                        <div class="gallery__hover__action">
+                          <ul class="gallery__zoom">
+                            <li>
+                              <a
+                                href={book.backgroundImage}
+                                data-lightbox="grportimg"
+                                data-title="My caption"
+                              >
+                                <i class="fa fa-search"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="gallery-details.html">
+                                <i class="fa fa-link"></i>
+                              </a>
+                            </li>
+                          </ul>
+                          <h4 class="gallery__title">
+                            <a href="google.com">Creating Funny Things</a>
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="gallery wow fadeInUp">
-                <div class="gallery__thumb">
-                  <a href="google.com">
-                    <img
-                      src="./assets/images/gallery/gallery-1/2.jpg"
-                      alt="gallery ./assets/images"
-                    />
-                  </a>
-                </div>
-                <div class="gallery__hover__inner">
-                  <div class="gallery__hover__action">
-                    <ul class="gallery__zoom">
-                      <li>
-                        <a
-                          href="./assets/images/gallery/big-img/2.jpg"
-                          data-lightbox="grportimg"
-                          data-title="My caption"
-                        >
-                          <i class="fa fa-search"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="gallery-details.html">
-                          <i class="fa fa-link"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <h4 class="gallery__title">
-                      <a href="google.com">Creating Funny Things</a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="gallery wow fadeInUp">
-                <div class="gallery__thumb">
-                  <a href="google.com">
-                    <img
-                      src="./assets/images/gallery/gallery-1/3.jpg"
-                      alt="gallery ./assets/images"
-                    />
-                  </a>
-                </div>
-                <div class="gallery__hover__inner">
-                  <div class="gallery__hover__action">
-                    <ul class="gallery__zoom">
-                      <li>
-                        <a
-                          href="./assets/images/gallery/big-img/3.jpg"
-                          data-lightbox="grportimg"
-                          data-title="My caption"
-                        >
-                          <i class="fa fa-search"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="gallery-details.html">
-                          <i class="fa fa-link"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <h4 class="gallery__title">
-                      <a href="google.com">Creating Funny Things</a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="gallery wow fadeInUp">
-                <div class="gallery__thumb">
-                  <a href="google.com">
-                    <img
-                      src="./assets/images/gallery/gallery-1/4.jpg"
-                      alt="gallery ./assets/images"
-                    />
-                  </a>
-                </div>
-                <div class="gallery__hover__inner">
-                  <div class="gallery__hover__action">
-                    <ul class="gallery__zoom">
-                      <li>
-                        <a
-                          href="./assets/images/gallery/big-img/4.jpg"
-                          data-lightbox="grportimg"
-                          data-title="My caption"
-                        >
-                          <i class="fa fa-search"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="gallery-details.html">
-                          <i class="fa fa-link"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <h4 class="gallery__title">
-                      <a href="google.com">Creating Funny Things</a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="gallery wow fadeInUp">
-                <div class="gallery__thumb">
-                  <a href="google.com">
-                    <img
-                      src="./assets/images/gallery/gallery-1/5.jpg"
-                      alt="gallery ./assets/images"
-                    />
-                  </a>
-                </div>
-                <div class="gallery__hover__inner">
-                  <div class="gallery__hover__action">
-                    <ul class="gallery__zoom">
-                      <li>
-                        <a
-                          href="./assets/images/gallery/big-img/5.jpg"
-                          data-lightbox="grportimg"
-                          data-title="My caption"
-                        >
-                          <i class="fa fa-search"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="gallery-details.html">
-                          <i class="fa fa-link"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <h4 class="gallery__title">
-                      <a href="google.com">Creating Funny Things</a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="gallery wow fadeInUp">
-                <div class="gallery__thumb">
-                  <a href="google.com">
-                    <img
-                      src="./assets/images/gallery/gallery-1/6.jpg"
-                      alt="gallery ./assets/images"
-                    />
-                  </a>
-                </div>
-                <div class="gallery__hover__inner">
-                  <div class="gallery__hover__action">
-                    <ul class="gallery__zoom">
-                      <li>
-                        <a
-                          href="./assets/images/gallery/big-img/6.jpg"
-                          data-lightbox="grportimg"
-                          data-title="My caption"
-                        >
-                          <i class="fa fa-search"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="gallery-details.html">
-                          <i class="fa fa-link"></i>
-                        </a>
-                      </li>
-                    </ul>
-                    <h4 class="gallery__title">
-                      <a href="google.com">Creating Funny Things</a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
+                );
+              }
+            })}
           </div>
         </div>
       </section>

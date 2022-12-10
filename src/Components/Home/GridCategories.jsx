@@ -16,7 +16,7 @@ export default function GridCategories() {
                 </div>
                 <div class="service__details">
                   <h6>
-                    <a href="service.html">Drawing Class</a>
+                    <a href="service.html">Stores</a>
                   </h6>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -25,7 +25,8 @@ export default function GridCategories() {
                   <div class="service__btn">
                     <a
                       class="dcare__btn btn__gray hover--theme min__height-btn"
-                      href="google.com">
+                      href="google.com"
+                    >
                       Read More
                     </a>
                   </div>
@@ -36,7 +37,8 @@ export default function GridCategories() {
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 xs-mt-60">
               <div
                 class="service bg--white border__color border__color--2 wow fadeInUp"
-                data-wow-delay="0.2s">
+                data-wow-delay="0.2s"
+              >
                 <div class="service__icon">
                   <img
                     src="./assets/images/shape/sm-icon/2.png"
@@ -45,7 +47,7 @@ export default function GridCategories() {
                 </div>
                 <div class="service__details">
                   <h6>
-                    <a href="service.html">Active Learning</a>
+                    <a href="service.html">Videos</a>
                   </h6>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -54,7 +56,8 @@ export default function GridCategories() {
                   <div class="service__btn">
                     <a
                       class="dcare__btn btn__gray hover--theme min__height-btn"
-                      href="google.com">
+                      href="google.com"
+                    >
                       Read More
                     </a>
                   </div>
@@ -65,7 +68,8 @@ export default function GridCategories() {
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 md-mt-60 sm-mt-60">
               <div
                 class="service bg--white border__color border__color--3 wow fadeInUp"
-                data-wow-delay="0.45s">
+                data-wow-delay="0.45s"
+              >
                 <div class="service__icon">
                   <img
                     src="./assets/images/shape/sm-icon/3.png"
@@ -83,7 +87,8 @@ export default function GridCategories() {
                   <div class="service__btn">
                     <a
                       class="dcare__btn btn__gray hover--theme min__height-btn"
-                      href="google.com">
+                      href="google.com"
+                    >
                       Read More
                     </a>
                   </div>
@@ -94,7 +99,8 @@ export default function GridCategories() {
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 md-mt-60 sm-mt-60">
               <div
                 class="service bg--white border__color border__color--4 wow fadeInUp"
-                data-wow-delay="0.65s">
+                data-wow-delay="0.65s"
+              >
                 <div class="service__icon">
                   <img
                     src="./assets/images/shape/sm-icon/4.png"
@@ -112,7 +118,8 @@ export default function GridCategories() {
                   <div class="service__btn">
                     <a
                       class="dcare__btn btn__gray hover--theme min__height-btn"
-                      href="google.com">
+                      href="google.com"
+                    >
                       Read More
                     </a>
                   </div>

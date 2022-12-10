@@ -4,7 +4,10 @@ function Footer() {
   return (
     <div>
       <footer id="footer" class="footer-area footer--2">
-        <div class="footer__wrapper bg-image--10 section-padding--lg">
+        <div
+          class="footer__wrapper bg-image--10 section-padding--lg"
+          style={{ background: "#0095e8", height: "500px" }}
+        >
           <div class="container">
             <div class="row">
               <div class="col-lg-3 col-md-6 col-sm-12">
@@ -17,10 +20,17 @@ function Footer() {
                       />
                     </a>
                   </div>
+                  <br></br>
+
                   <div class="ftr__details">
+                    <div class="ft__btm__title">
+                      <h4>About Us</h4>
+                    </div>
                     <p>
-                      Lorem ipsum dolor sit cnr adipisicing elit, sed do eiusmod
-                      teagna aliqua. Lorem ipsudolor sit cnr adi.
+                      We are the Junior Kids platform team We have prepared this
+                      entertainment platform for children, believing that
+                      children are the basis for a bright future And under the
+                      supervision of our big family in Orange Coding Academy
                     </p>
                   </div>
                   <div class="ftr__address__inner">
@@ -48,9 +58,6 @@ function Footer() {
                         </li>
                       </ul>
                     </div>
-                    <div class="ft__btm__title">
-                      <h4>About Us</h4>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -64,7 +71,8 @@ function Footer() {
                         <div class="ftr__post__thumb">
                           <a href="blog-details.html">
                             <img
-                              src="./assets/images/blog/post-img/2.jpg"
+                              src="https://i.pinimg.com/564x/33/5f/96/335f968d80a15e0d072ddfef4314d881.jpg"
+                              style={{ width: "80px" }}
                               alt="post images"
                             />
                           </a>
@@ -85,7 +93,8 @@ function Footer() {
                         <div class="ftr__post__thumb">
                           <a href="blog-details.html">
                             <img
-                              src="./assets/images/blog/post-img/3.jpg"
+                              src="https://i.pinimg.com/564x/2c/e3/ee/2ce3ee10e69d18e41f0b0a539b7660d3.jpg"
+                              style={{ width: "80px" }}
                               alt="post images"
                             />
                           </a>
@@ -106,7 +115,8 @@ function Footer() {
                         <div class="ftr__post__thumb">
                           <a href="blog-details.html">
                             <img
-                              src="./assets/images/blog/post-img/4.jpg"
+                              src="https://i.pinimg.com/564x/d9/a8/29/d9a829919134066671872c3aef685e6a.jpg"
+                              style={{ width: "80px" }}
                               alt="post images"
                             />
                           </a>
@@ -134,25 +144,19 @@ function Footer() {
                     <div class="ftr__latest__post">
                       <ul class="ftr__catrgory">
                         <li>
-                          <a href="#">Painting</a>
+                          <a href="#">Stores</a>
                         </li>
                         <li>
-                          <a href="#">Alphabet Matching</a>
+                          <a href="#">Videos</a>
                         </li>
                         <li>
-                          <a href="#">Drawing</a>
+                          <a href=".">Shop</a>
                         </li>
                         <li>
-                          <a href="#">Swimming</a>
+                          <a href="#">About</a>
                         </li>
                         <li>
-                          <a href="#">Sports & Games</a>
-                        </li>
-                        <li>
-                          <a href="#">Painting</a>
-                        </li>
-                        <li>
-                          <a href="#">Alphabet Matching</a>
+                          <a href="#">Contact</a>
                         </li>
                       </ul>
                     </div>
@@ -160,46 +164,72 @@ function Footer() {
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
-                <div class="footer__widget">
-                  <h4>Twitter Widget</h4>
+              {/* <div class="footer__widget">
+                  <h4>Our Location</h4>
                   <div class="footer__innner">
                     <div class="dcare__twit__wrap">
                       <div class="dcare__twit d-flex">
-                        <div class="dcare__twit__icon">
-                          <i class="fa fa-twitter"></i>
-                        </div>
+
                         <div class="dcare__twit__details">
+
                           <p>
-                            Lorem ipsum dolor sit consect ietur adipisicing sed
-                            eiipsa
-                            <a href="#"># twitter .com?web/lnk/statement</a>
+                            You can visit our current website for more information or to see the website of our services .
                           </p>
-                          <span>
-                            <i class="fa fa-clock-o"></i>30th Dec, 2017
+                          <br></br>
+                          <span class="dcare__twit__details">
+                            <h4>Phone Number</h4>
+                            <p>+962770000000</p>
+                            <p> +962770077777</p>
                           </span>
-                          <span>
-                            <i class="fa fa-calendar"></i>30th Dec, 2017
-                          </span>
+
                         </div>
                       </div>
+                      <br></br>
 
                       <div class="dcare__twit d-flex">
                         <div class="dcare__twit__icon">
-                          <i class="fa fa-twitter"></i>
+
                         </div>
+                        <div>
+                          <h4>E-Mail Address</h4>
+                          <span>
+                            <p>
+                              junior.admin@email.com
+                            </p>
+                            <p>JuniorKids.@yahoo.com</p>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> */}
+
+              <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
+                <div class="footer__widget">
+                  <h4>Our Location</h4>
+                  <p className="text-light">
+                    JORDAN, AMMAN <br></br>Road # 12, Sec #13, 5th Floor
+                  </p>
+                  <div class="footer__innner">
+                    <div class="dcare__twit__wrap">
+                      <div class="dcare__twit d-flex">
+                        {/* <div class="dcare__twit__icon">
+												
+											</div> */}
                         <div class="dcare__twit__details">
-                          <p>
-                            Lorem ipsum dolor sit consect ietur adipisicing sed
-                            eiipsa
-                            <a href="#"># twitter .com?web/lnk/statement</a>
-                          </p>
-                          <span>
-                            <i class="fa fa-clock-o"></i>30th Dec, 2017
-                          </span>
-                          <span>
-                            <i class="fa fa-calendar"></i>30th Dec, 2017
-                          </span>
+                          <h4>Phone Number</h4>
+                          <p>+962770000000</p>
+                          <p> +962770077777</p>
+                        </div>
+                      </div>
+                      <br></br>
+
+                      <div class="dcare__twit d-flex">
+                        <div class="dcare__twit__details">
+                          <h4>E-Mail Address</h4>
+                          <span>junior.admin@email.com</span>
+                          <br></br>
+                          <span>junior.kid@email.com</span>
                         </div>
                       </div>
                     </div>
@@ -208,74 +238,15 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div class="ft__bottom__images--1 wow flipInX" data-wow-delay="0.6s">
-            <img
-              src="./assets/images/banner/mid-img/ft.png"
-              alt="footer images"
-            />
-          </div>
-          <div
-            class="ft__bottom__images--2 wow fadeInRight"
-            data-wow-delay="0.6s">
-            <img
-              src="./assets/images/banner/mid-img/ft-2.png"
-              alt="footer images"
-            />
-          </div>
         </div>
-        <div class="footer__contact__area bg__cat--2">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="footer__contact__wrapper d-flex flex-wrap justify-content-between">
-                  <div class="single__footer__address">
-                    <div class="ft__contact__icon">
-                      <i class="fa fa-home"></i>
-                    </div>
-                    <div class="ft__contact__details">
-                      <p>Uttara, Zamzam Tower</p>
-                      <p>Road # 12, Sec #13, 5th Floor</p>
-                    </div>
-                  </div>
-                  <div class="single__footer__address">
-                    <div class="ft__contact__icon">
-                      <i class="fa fa-phone"></i>
-                    </div>
-                    <div class="ft__contact__details">
-                      <p>
-                        <a href="#">+08097-654321</a>
-                      </p>
-                      <p>
-                        <a href="#">+09876-543211</a>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="single__footer__address">
-                    <div class="ft__contact__icon">
-                      <i class="fa fa-envelope"></i>
-                    </div>
-                    <div class="ft__contact__details">
-                      <p>
-                        <a href="#">juniorhomeschool.@email.com</a>
-                      </p>
-                      <p>
-                        <a href="#">Kidscareschool.@yahoo.com</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="copyright  bg--theme">
+
+        <div class="copyright" style={{ backgroundColor: "#0095e8" }}>
           <div class="container">
             <div class="row align-items-center copyright__wrapper justify-content-center">
               <div class="col-lg-12 col-sm-12 col-md-12">
                 <div class="coppy__right__inner text-center">
                   <p>
-                    Copyright <i class="fa fa-copyright"></i>
-                    <a href="https://freethemescloud.com/" target="_blank"></a>
+                    <i class="fa fa-copyright">Copyright By Jounior Team</i>
                   </p>
                 </div>
               </div>
@@ -294,10 +265,10 @@ function Footer() {
               <div class="cartbox__item">
                 <div class="cartbox__item__thumb">
                   <a href="product-details.html">
-                    <img
+                    {/* <img
                       src="./assets/images/product/sm-pro/1.jpg"
                       alt="small thumbnail"
-                    />
+                    /> */}
                   </a>
                 </div>
                 <div class="cartbox__item__content">
@@ -318,10 +289,10 @@ function Footer() {
               <div class="cartbox__item">
                 <div class="cartbox__item__thumb">
                   <a href="product-details.html">
-                    <img
+                    {/* <img
                       src="./assets/images/product/sm-pro/2.jpg"
                       alt="small thumbnail"
-                    />
+                    /> */}
                   </a>
                 </div>
                 <div class="cartbox__item__content">
@@ -342,10 +313,10 @@ function Footer() {
               <div class="cartbox__item">
                 <div class="cartbox__item__thumb">
                   <a href="product-details.html">
-                    <img
+                    {/* <img
                       src="./assets/images/product/sm-pro/3.jpg"
                       alt="small thumbnail"
-                    />
+                    /> */}
                   </a>
                 </div>
                 <div class="cartbox__item__content">

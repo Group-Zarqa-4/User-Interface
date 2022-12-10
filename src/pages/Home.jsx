@@ -1,5 +1,5 @@
 import React from "react";
-import $ from "jquery";
+// import $ from "jquery";
 import Hero from "../Components/Home/Hero";
 import GridCategories from "../Components/Home/GridCategories";
 import Enroll from "../Components/Home/Enroll";
