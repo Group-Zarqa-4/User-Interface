@@ -27,28 +27,25 @@ function AddPosts() {
         e.preventDefault()
         console.log("ok");
         const data = new FormData(e.currentTarget);
-        data.append("title", title);
-        data.append("review", review);
-        data.append("user_id",user.id)
-        axios
-        .post(`http://localhost:8000/api/${""}`, data)
-        .then((res) => {
-          setTimeout(() => {
-            window.location.reload(false);
-          }, 100);
-            console.log(res);
-            Swal.fire(
-                'Review Submitted',
-                'success'
-              )
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        data.append("content", review);
+        data.append("user_id", user.id);
+        // axios.get("/sanctum/csrf-cookie").then((response) => {
+            axios
+            .post(`api/storePost`, data)
+            .then((res) => {
+              setTimeout(() => {
+                window.location.reload(false);
+              }, 100);
+                console.log(res);
+                Swal.fire(
+                    'Review Submitted',
+                    'success'
+                  )
+            })
+            // });
+          
+        };
 
-
-
-}
 
     return (
         <div>
@@ -57,6 +54,7 @@ function AddPosts() {
             Add Review
             </button>
             <Box
+                method='post'
                   component="form"
                   noValidate
                   onSubmit={(e) => handleSubmit(e )}
@@ -73,11 +71,6 @@ function AddPosts() {
                 
                         <div className="modal-body ">
                             <div className="container">
-
-                                <div className="mb-3">
-                                        <label htmlFor="" className="form-label"> Enter your title here</label>
-                                        <input onChange={(e)=>setTitle(e.target.value)} type="text" className="form-control" id="title"></input>
-                                    </div>
                                     <div className="mb-3">
                                         <label htmlFor="" className="form-label"> Enter your review here</label>
                                         <textarea type="text" onChange={(e)=>setReview(e.target.value)} className="form-control" id="textarea"  ></textarea>
