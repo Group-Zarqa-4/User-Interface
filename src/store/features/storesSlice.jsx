@@ -13,7 +13,7 @@ const fetchStores = createAsyncThunk(
 const initialState = {};
 export const storeSlice = createSlice({
   name: "stores",
-  initialState,
+  initialState: {},
   reducers: {},
   extraReducers: {
     // [fetchStores.pending]

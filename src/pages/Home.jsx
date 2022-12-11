@@ -4,6 +4,8 @@ import Hero from "../Components/Home/Hero";
 import GridCategories from "../Components/Home/GridCategories";
 import Enroll from "../Components/Home/Enroll";
 import Gallery from "../Components/Home/Gallery";
+import Register from "../Auth/Register";
+import Login from "../Auth/Login";
 
 function Home() {
   return (
@@ -132,61 +134,8 @@ function Home() {
         </div>
       </div>
 
-      <div class="accountbox-wrapper">
-        <div class="accountbox">
-          <div class="accountbox__inner">
-            <h4>continue to register</h4>
-            <div class="accountbox__login">
-              <form action="google.com">
-                <div class="single-input">
-                  <input type="text" placeholder="User name" />
-                </div>
-                <div class="single-input">
-                  <input type="email" placeholder="E-mail" />
-                </div>
-                <div class="single-input">
-                  <input type="text" placeholder="Phone" />
-                </div>
-                <div class="single-input">
-                  <input type="password" placeholder="Password" />
-                </div>
-                <div class="single-input">
-                  <input type="password" placeholder="Confirm password" />
-                </div>
-                <div class="single-input text-center">
-                  <button type="submit" class="sign__btn">
-                    Sign Up Now
-                  </button>
-                </div>
-                <div class="accountbox-login__others text-center">
-                  <h6>or register with</h6>
-                  <ul class="dacre__social__link d-flex justify-content-center">
-                    <li class="facebook">
-                      <a target="_blank" href="https://www.facebook.com/">
-                        <span class="ti-facebook"></span>
-                      </a>
-                    </li>
-                    <li class="twitter">
-                      <a target="_blank" href="https://twitter.com/">
-                        <span class="ti-twitter"></span>
-                      </a>
-                    </li>
-                    <li class="pinterest">
-                      <a target="_blank" href="google.com">
-                        <span class="ti-google"></span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </form>
-            </div>
-            <span class="accountbox-close-button">
-              <i class="zmdi zmdi-close"></i>
-            </span>
-          </div>
-          <h3>Have an account ? Login Fast</h3>
-        </div>
-      </div>
+      {/* <Register />
+      <Login /> */}
     </div>
   );
 }
