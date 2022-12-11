@@ -17,7 +17,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import axios from "axios";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,25 +29,28 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [userdata, setUserData] = React.useState("");
   const [comments, setComments] = React.useState("");
   const [newComment, setNewComment] = React.useState("");
-
+  console.log(props.post);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   function handleCommentClick(id) {
-    // axios.post('/link');
+    // axios.post("http://localhost:8000/api/storeComment");
   }
-
+  console.log(newComment);
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card className="text-break" sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar
+            src={`${props.post.post.user.image}`}
+            sx={{ bgcolor: red[500] }}
+            aria-label="recipe">
             R
           </Avatar>
         }
@@ -57,20 +59,13 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={props.post.post.user.name}
+        subheader={props.post.post.date}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
-      />
+
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {props.post.post.content}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -87,7 +82,7 @@ export default function RecipeReviewCard() {
           aria-label="show more">
           <ExpandMoreIcon />
         </ExpandMore>
-        <Typography style={{ hover: "pointer" }} onClick={handleExpandClick}>
+        <Typography style={{ cursor: "pointer" }} onClick={handleExpandClick}>
           Comments
         </Typography>
       </CardActions>
@@ -102,7 +97,7 @@ export default function RecipeReviewCard() {
               onChange={(e) => setNewComment(e.target.value)}
             />
             <button
-              onClick={(e) => handleCommentClick(e.target.value)}
+              onClick={(e) => handleCommentClick(props.post.post.id)}
               className=" btn btn-primary p-3 ms-2 rounded"
               style={{ display: "inline" }}>
               Send
@@ -111,23 +106,38 @@ export default function RecipeReviewCard() {
               />
             </button>
           </Typography>
-          <Typography paragraph>
-            <Box className="d-flex p-2">
-              <Avatar
-                className=""
-                sx={{ bgcolor: red[500] }}
-                aria-label="recipe">
-                J
-              </Avatar>
-              <Typography className="p-2">Jafar THwahrah</Typography>
-            </Box>
-            <Typography
-              className="text-break p-2 rounded"
-              paragraph
-              style={{ wordWrap: "breakWord", backgroundColor: "#E8EDEF" }}>
-              ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-            </Typography>
-          </Typography>
+          {props?.post.post.comments.map((comment) => {
+            return (
+              <>
+                <Box className="d-flex p-2">
+                  <Avatar
+                    src={`${comment.comment_by.image}`}
+                    className=""
+                    sx={{ bgcolor: red[500] }}
+                    aria-label="recipe">
+                    J
+                  </Avatar>
+                  <Typography className="p-2">
+                    {comment.comment_by.name}
+                  </Typography>
+                </Box>
+                <Typography
+                  className="text-break p-2 rounded"
+                  paragraph
+                  style={{ backgroundColor: "#E8EDEF" }}>
+                  {comment.content}
+                  <Typography
+                    style={{
+                      color: "grey",
+                      fontStyle: "italic",
+                      fontSize: "12px",
+                    }}>
+                    {comment.date}
+                  </Typography>
+                </Typography>
+              </>
+            );
+          })}
         </CardContent>
       </Collapse>
     </Card>
