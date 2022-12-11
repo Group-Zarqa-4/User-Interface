@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import Logout from "../Auth/Logout";
 import { GoogleLogout } from "react-google-login";
 import { useNavigate } from "react-router-dom";
@@ -15,8 +15,10 @@ function Header() {
 
   const logOut = () => {
     const token = localStorage.getItem("token");
+    const axiosAuth = "Bearer " + token;
+    axios.defaults.headers.common["Authorization"] = axiosAuth;
     axios.get("/sanctum/csrf-cookie").then((response) => {
-      axios.post("/api/logout", token).then((response) => {
+      axios.post("/api/logout").then((response) => {
         console.log(response.data.message);
         localStorage.removeItem("google-user");
         localStorage.removeItem("google-current-user");
@@ -28,8 +30,6 @@ function Header() {
     // localStorage.removeItem("auth");
 
     // const token = localStorage.getItem("token");
-    // const axiosAuth = "Bearer " + token;
-    // axios.defaults.headers.common["Authorization"] = axiosAuth;
     // axios.get("/sanctum/csrf-cookie").then((response) => {
     //   axios.post("/api/logout", token).then((response) => {
     //     console.log(response);
@@ -120,6 +120,9 @@ function Header() {
                       </li>
                       <li class="drop">
                         <Link to="/stores">Stores</Link>
+                      </li>
+                      <li class="drop">
+                        <NavLink to="/reviews">Reviews</NavLink>
                       </li>
                       <li class="drop">
                         <Link to="event-grid.html">Vidoes</Link>
