@@ -6,6 +6,7 @@ import { PostAddSharp } from "@mui/icons-material";
 import { useEffect } from "react";
 function Reviews() {
   const [allPosts, setAllPosts] = useState([]);
+  const tokens = localStorage.getItem("token");
 
   useEffect(() => {
     axios
@@ -21,7 +22,7 @@ function Reviews() {
 
   return (
     <div className="m-5 p-5">
-      <AddPosts />
+      {tokens && <AddPosts />}
       <div className="d-flex flex-wrap">
         {allPosts?.map((post) => {
           return (

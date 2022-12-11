@@ -7,30 +7,19 @@ function AddPosts() {
   const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
   const [user, setUser] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/users/2")
-      .then((res) => {
-        console.log(res.data);
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+  const [useData, setUserData] = useState({});
+  const auth_user_id = localStorage.getItem("user");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ok");
     const data = new FormData(e.currentTarget);
     data.append("content", review);
-    data.append("user_id", user.id);
+    data.append("user_id", auth_user_id);
     // axios.get("/sanctum/csrf-cookie").then((response) => {
     axios.post(`api/storePost`, data).then((res) => {
       setTimeout(() => {
         window.location.reload(false);
-      }, 100);
+      }, 1000);
       console.log(res);
       Swal.fire("Review Submitted", "success");
     });
@@ -77,6 +66,7 @@ function AddPosts() {
                 <div className="container">
                   <div className="mb-3">
                     <label htmlFor="" className="form-label">
+                      {" "}
                       Enter your review here
                     </label>
                     <textarea

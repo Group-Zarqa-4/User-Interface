@@ -17,6 +17,9 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,18 +34,39 @@ const ExpandMore = styled((props) => {
 
 export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = React.useState(false);
-  const [userdata, setUserData] = React.useState("");
-  const [comments, setComments] = React.useState("");
   const [newComment, setNewComment] = React.useState("");
-  console.log(props.post);
+  const [checkComments, setCheckComments] = React.useState(false);
+  const auth_user_id = localStorage.getItem("user");
+  const [comments, setComments] = React.useState();
+  useEffect(() => {
+    axios.get(`/api/comments/${props.post.post.id}`).then((res) => {
+      setComments(res.data);
+      console.log(res);
+    });
+  }, [checkComments]);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  function handleCommentClick(id) {
-    // axios.post("http://localhost:8000/api/storeComment");
+  function handleCommentClick(post_id, user_id, e) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    data.append("post_id", post_id);
+    data.append("user_id", user_id);
+    data.append("content", newComment);
+    axios
+      .post("http://localhost:8000/api/storeComment", data)
+      .then((res) => {
+        setNewComment("");
+        setCheckComments(!checkComments);
+
+        Swal.fire("Review Submitted", "success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  //   console.log(newComment);
   return (
     <Card className="text-break" sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -62,7 +86,7 @@ export default function RecipeReviewCard(props) {
         title={props.post.post.user.name}
         subheader={props.post.post.date}
       />
-
+      {console.log(props.post.post)}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {props.post.post.content}
@@ -90,36 +114,42 @@ export default function RecipeReviewCard(props) {
         <CardContent>
           <Typography paragraph>Add new Comments:</Typography>
           <Typography paragraph>
-            <TextField
-              id="outlined-basic"
-              label="Add Comment"
-              variant="outlined"
-              onChange={(e) => setNewComment(e.target.value)}
-            />
-            <button
-              onClick={(e) => handleCommentClick(props.post.post.id)}
-              className=" btn btn-primary p-3 ms-2 rounded"
-              style={{ display: "inline" }}>
-              Send
-              <ArrowForwardIosIcon
-                style={{ color: "white", hover: "pointer" }}
+            <Box
+              onSubmit={(e) =>
+                handleCommentClick(props.post.post.id, auth_user_id, e)
+              }
+              component="form">
+              <TextField
+                id="outlined-basic"
+                label="Add Comment"
+                variant="outlined"
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
               />
-            </button>
+              <button
+                type="submit"
+                className=" btn btn-primary p-3 ms-2 rounded"
+                style={{ display: "inline" }}>
+                Send
+                <ArrowForwardIosIcon
+                  style={{ color: "white", hover: "pointer" }}
+                />
+              </button>
+            </Box>
           </Typography>
-          {props?.post.post.comments.map((comment) => {
+          {comments?.map((comment) => {
+            console.log(comment);
             return (
               <>
                 <Box className="d-flex p-2">
                   <Avatar
-                    src={`${comment.comment_by.image}`}
+                    src={`${comment.image}`}
                     className=""
                     sx={{ bgcolor: red[500] }}
                     aria-label="recipe">
                     J
                   </Avatar>
-                  <Typography className="p-2">
-                    {comment.comment_by.name}
-                  </Typography>
+                  <Typography className="p-2">{comment.name}</Typography>
                 </Box>
                 <Typography
                   className="text-break p-2 rounded"
