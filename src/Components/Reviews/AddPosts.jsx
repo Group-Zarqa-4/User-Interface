@@ -10,7 +10,7 @@ function AddPosts() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/users/6")
+      .get("http://127.0.0.1:8000/api/users/2")
       .then((res) => {
         console.log(res.data);
         setUser(res.data);
@@ -24,25 +24,21 @@ function AddPosts() {
     e.preventDefault();
     console.log("ok");
     const data = new FormData(e.currentTarget);
-    data.append("title", title);
-    data.append("review", review);
+    data.append("content", review);
     data.append("user_id", user.id);
-    axios
-      .post(`http://localhost:8000/api/${""}`, data)
-      .then((res) => {
-        setTimeout(() => {
-          window.location.reload(false);
-        }, 100);
-        console.log(res);
-        Swal.fire("Review Submitted", "success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios.get("/sanctum/csrf-cookie").then((response) => {
+    axios.post(`api/storePost`, data).then((res) => {
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 100);
+      console.log(res);
+      Swal.fire("Review Submitted", "success");
+    });
+    // });
   };
 
   return (
-    <div style={{ marginLeft: "3rem" }}>
+    <div>
       <button
         type="button"
         className="btn btn-primary"
@@ -51,6 +47,7 @@ function AddPosts() {
         Add Review
       </button>
       <Box
+        method="post"
         component="form"
         noValidate
         onSubmit={(e) => handleSubmit(e)}
@@ -80,18 +77,6 @@ function AddPosts() {
                 <div className="container">
                   <div className="mb-3">
                     <label htmlFor="" className="form-label">
-                      {" "}
-                      Enter your title here
-                    </label>
-                    <input
-                      onChange={(e) => setTitle(e.target.value)}
-                      type="text"
-                      className="form-control"
-                      id="title"></input>
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="" className="form-label">
-                      {" "}
                       Enter your review here
                     </label>
                     <textarea

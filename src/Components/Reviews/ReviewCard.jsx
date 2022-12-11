@@ -42,7 +42,7 @@ export default function RecipeReviewCard(props) {
   function handleCommentClick(id) {
     // axios.post("http://localhost:8000/api/storeComment");
   }
-  console.log(newComment);
+  //   console.log(newComment);
   return (
     <Card className="text-break" sx={{ maxWidth: 345 }}>
       <CardHeader

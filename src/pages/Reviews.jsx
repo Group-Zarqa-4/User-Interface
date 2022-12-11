@@ -20,12 +20,12 @@ function Reviews() {
   }, []);
 
   return (
-    <div className="m-5">
-      <AddPosts />;
-      <div className="d-flex">
+    <div className="m-5 p-5">
+      <AddPosts />
+      <div className="d-flex flex-wrap">
         {allPosts?.map((post) => {
           return (
-            <div className="p-5">
+            <div className="p-3">
               <ReviewCards post={post} />
             </div>
           );
