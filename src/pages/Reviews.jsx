@@ -2,7 +2,7 @@ import React from "react";
 import AddPosts from "../Components/Reviews/AddPosts";
 
 function Reviews() {
-  return <div>
+  return <div className="container mt-4">
     <AddPosts/>
   </div>;
 }

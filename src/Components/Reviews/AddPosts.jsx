@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Box } from '@mui/material';
 import Swal from 'sweetalert2';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 function AddPosts() {
 
     const [title, setTitle] = useState("");
@@ -53,7 +54,7 @@ function AddPosts() {
         <div>
 
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
+            Add Review
             </button>
             <Box
                   component="form"
@@ -66,8 +67,8 @@ function AddPosts() {
                 <div className="modal-dialog 	modal-lg ">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h4 className="modal-title" id="exampleModalLabel">Add Review</h4>
+                            <button type="button" className=" btn btn-close fs-4" data-bs-dismiss="modal" aria-label="Close"><HighlightOffIcon/></button>
                         </div>
                 
                         <div className="modal-body ">
