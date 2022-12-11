@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 function Header() {
   return (
     <div>
@@ -64,6 +64,9 @@ function Header() {
                       </li>
                       <li class="drop">
                         <Link to="/stores">Stores</Link>
+                      </li>
+                      <li class="drop">
+                        <NavLink to="/reviews">Reviews</NavLink>
                       </li>
                       <li class="drop">
                         <Link to="event-grid.html">Vidoes</Link>

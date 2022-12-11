@@ -4,7 +4,9 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import Profile from "./Profile/Profile";
+import Reviews from "./Reviews";
 import Stores from "./Stores";
+
 function RouteList() {
   return (
     <div>
@@ -14,6 +16,7 @@ function RouteList() {
         <Route path="/vidoes" element={<Home />} />
         <Route path="/shop" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
