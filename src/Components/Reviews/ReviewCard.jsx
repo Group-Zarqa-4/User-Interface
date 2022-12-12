@@ -17,9 +17,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ModeEditTwoToneIcon from "@mui/icons-material/ModeEditTwoTone";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,17 +40,51 @@ export default function RecipeReviewCard(props) {
   const [checkComments, setCheckComments] = React.useState(false);
   const auth_user_id = localStorage.getItem("userId");
   const [comments, setComments] = React.useState();
+  const [editComment, setEditComment] = React.useState(false);
+
   useEffect(() => {
-    axios.get(`/api/comments/${props.post.post.id}`).then((res) => {
-      setComments(res.data);
-      console.log(res);
-    });
+    axios
+      .get(`/api/comments/${props.post.post.id}`)
+      .then((res) => {
+        setComments(res.data.comments);
+        // console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [checkComments]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  console.log(editComment);
 
+  function handleSubmit(event, id) {
+    event.preventDefault();
+    console.log(id);
+    const data = new FormData(event.currentTarget);
+
+    data.append("content", editComment);
+    data.append("id", id);
+
+    // console.log(data.get("role"));
+    // console.log(data.get("is_premium"));
+
+    axios
+      .post(`http://localhost:8000/api/updateComment/${id}`, data)
+      .then((res) => {
+        Swal.fire("comment updated", "success");
+
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 1000);
+
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   function handleCommentClick(post_id, user_id, e) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -68,14 +104,16 @@ export default function RecipeReviewCard(props) {
       });
   }
   return (
-    <Card className="text-break" sx={{ maxWidth: 345 }}>
+    <Card
+      style={{ minWidth: "50rem" }}
+      className="text-break"
+      sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
           <Avatar
             src={`${props.post.post.user.image}`}
             sx={{ bgcolor: red[500] }}
-            aria-label="recipe"
-          >
+            aria-label="recipe">
             R
           </Avatar>
         }
@@ -87,7 +125,7 @@ export default function RecipeReviewCard(props) {
         title={props.post.post.user.name}
         subheader={props.post.post.date}
       />
-      {console.log(props.post.post)}
+      {/* {console.log(props.post.post)} */}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {props.post.post.content}
@@ -104,8 +142,7 @@ export default function RecipeReviewCard(props) {
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more"
-        >
+          aria-label="show more">
           <ExpandMoreIcon />
         </ExpandMore>
         <Typography style={{ cursor: "pointer" }} onClick={handleExpandClick}>
@@ -120,8 +157,7 @@ export default function RecipeReviewCard(props) {
               onSubmit={(e) =>
                 handleCommentClick(props.post.post.id, auth_user_id, e)
               }
-              component="form"
-            >
+              component="form">
               <TextField
                 id="outlined-basic"
                 label="Add Comment"
@@ -132,8 +168,7 @@ export default function RecipeReviewCard(props) {
               <button
                 type="submit"
                 className=" btn btn-primary p-3 ms-2 rounded"
-                style={{ display: "inline" }}
-              >
+                style={{ display: "inline" }}>
                 Send
                 <ArrowForwardIosIcon
                   style={{ color: "white", hover: "pointer" }}
@@ -142,36 +177,136 @@ export default function RecipeReviewCard(props) {
             </Box>
           </Typography>
           {comments?.map((comment) => {
-            console.log(comment);
             return (
               <>
-                <Box className="d-flex p-2">
-                  <Avatar
-                    src={`${comment.image}`}
-                    className=""
-                    sx={{ bgcolor: red[500] }}
-                    aria-label="recipe"
-                  >
-                    J
-                  </Avatar>
-                  <Typography className="p-2">{comment.name}</Typography>
-                </Box>
-                <Typography
-                  className="text-break p-2 rounded"
-                  paragraph
-                  style={{ backgroundColor: "#E8EDEF" }}
-                >
-                  {comment.content}
-                  <Typography
-                    style={{
-                      color: "grey",
-                      fontStyle: "italic",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {comment.date}
-                  </Typography>
-                </Typography>
+                {props.post.post.id == comment.post_id ? (
+                  <>
+                    <Box className="d-flex justify-content-between p-2">
+                      <div className="d-flex">
+                        <Avatar
+                          src={`${comment.user.image}`}
+                          className=""
+                          sx={{ bgcolor: red[500] }}
+                          aria-label="recipe">
+                          J
+                        </Avatar>
+                        <Typography className="p-2">
+                          {comment.user.name}
+                        </Typography>
+                      </div>
+                      {comment.user.id == auth_user_id ? (
+                        <Link
+                          type="button"
+                          style={{
+                            backgroundColor: "transparent",
+                            border: "none",
+                          }}
+                          className="btn btn-info text-white text-decoration-nsone m-1"
+                          data-bs-toggle="modal"
+                          data-bs-target={`#exampleModal${comment.id}`}>
+                          <p
+                            style={{
+                              marginBottom: "-4rem",
+                            }}
+                            className="text-primary ">
+                            Edit
+                          </p>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
+                    </Box>
+                    <Typography
+                      className="text-break p-2 rounded"
+                      paragraph
+                      style={{ backgroundColor: "#E8EDEF" }}>
+                      {comment.content}
+                      {comment.user.id == auth_user_id ? (
+                        <>
+                          <div
+                            className="modal fade"
+                            id={`exampleModal${comment.id}`}
+                            tabindex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <Box
+                              component="form"
+                              noValidate
+                              onSubmit={(event) =>
+                                handleSubmit(event, comment.id)
+                              }
+                              sx={{ mt: 3 }}>
+                              <div className="modal-dialog">
+                                <div className="modal-content p-5">
+                                  <div className="modal-header">
+                                    <h1
+                                      className="modal-title fs-5"
+                                      id="exampleModalLabel">
+                                      Edit User info
+                                    </h1>
+                                    <button
+                                      type="button"
+                                      className="btn-close"
+                                      data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div className="modal-body">
+                                    {/* <form onSubmit={handleSubmit}> */}
+                                    <div className="mb-3">
+                                      <div class="form-floating">
+                                        <textarea
+                                          onChange={(e) =>
+                                            setEditComment(e.target.value)
+                                          }
+                                          class="form-control"
+                                          name="commentupdate"
+                                          placeholder="Leave a comment here"
+                                          id="floatingTextarea2"
+                                          style={{
+                                            height: "100px",
+                                          }}>
+                                          {comment.content}
+                                        </textarea>
+                                        <label for="floatingTextarea2">
+                                          Comments
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="modal-footer">
+                                    <button
+                                      type="button"
+                                      className="btn btn-secondary publishTourBtn"
+                                      data-bs-dismiss="modal">
+                                      Close
+                                    </button>
+                                    <button
+                                      type="submit"
+                                      className="btn btn-primary publishTourBtn">
+                                      Submit
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </Box>
+                          </div>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                      <Typography
+                        style={{
+                          color: "grey",
+                          fontStyle: "italic",
+                          fontSize: "12px",
+                        }}>
+                        {comment.created_at}
+                      </Typography>
+                    </Typography>
+                  </>
+                ) : (
+                  ""
+                )}
               </>
             );
           })}
