@@ -51,7 +51,11 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("userId", id);
       setLoginGoogle(true);
-      navigate("/");
+      if (user.role === "admin") {
+        navigate("/profile");
+      } else {
+        navigate("/");
+      }
     });
 
     // navigate("/");
@@ -69,15 +73,18 @@ export default function Login() {
       password: password,
     };
 
-    console.log(auth_login);
-    // return;
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.post("/api/login", auth_login).then((response) => {
         const token = response.data.token;
+        const user = response.data.user;
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
         setAuth(true);
-        navigate("/");
+        if (user.role === "admin") {
+          navigate("/profile");
+        } else {
+          navigate("/");
+        }
       });
     });
   };
@@ -107,7 +114,8 @@ export default function Login() {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form3Example3c">
+                              htmlFor="form3Example3c"
+                            >
                               Your Email
                             </label>
                           </div>
@@ -124,7 +132,8 @@ export default function Login() {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form3Example4c">
+                              htmlFor="form3Example4c"
+                            >
                               Password
                             </label>
                           </div>
@@ -132,7 +141,8 @@ export default function Login() {
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="submit"
-                            className="btn btn-primary btn-lg">
+                            className="btn btn-primary btn-lg"
+                          >
                             Login
                           </button>
                         </div>

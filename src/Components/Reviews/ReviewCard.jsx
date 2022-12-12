@@ -22,6 +22,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -107,13 +108,15 @@ export default function RecipeReviewCard(props) {
     <Card
       style={{ minWidth: "50rem" }}
       className="text-break"
-      sx={{ maxWidth: 345 }}>
+      sx={{ maxWidth: 345 }}
+    >
       <CardHeader
         avatar={
           <Avatar
             src={`${props.post.post.user.image}`}
             sx={{ bgcolor: red[500] }}
-            aria-label="recipe">
+            aria-label="recipe"
+          >
             R
           </Avatar>
         }
@@ -123,7 +126,7 @@ export default function RecipeReviewCard(props) {
           </IconButton>
         }
         title={props.post.post.user.name}
-        subheader={props.post.post.date}
+        subheader={format(new Date(props.post.post.date), "dd/mm/yyyy hh:mm a")}
       />
       {/* {console.log(props.post.post)} */}
       <CardContent>
@@ -142,7 +145,8 @@ export default function RecipeReviewCard(props) {
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more">
+          aria-label="show more"
+        >
           <ExpandMoreIcon />
         </ExpandMore>
         <Typography style={{ cursor: "pointer" }} onClick={handleExpandClick}>
@@ -157,7 +161,8 @@ export default function RecipeReviewCard(props) {
               onSubmit={(e) =>
                 handleCommentClick(props.post.post.id, auth_user_id, e)
               }
-              component="form">
+              component="form"
+            >
               <TextField
                 id="outlined-basic"
                 label="Add Comment"
@@ -168,7 +173,8 @@ export default function RecipeReviewCard(props) {
               <button
                 type="submit"
                 className=" btn btn-primary p-3 ms-2 rounded"
-                style={{ display: "inline" }}>
+                style={{ display: "inline" }}
+              >
                 Send
                 <ArrowForwardIosIcon
                   style={{ color: "white", hover: "pointer" }}
@@ -187,7 +193,8 @@ export default function RecipeReviewCard(props) {
                           src={`${comment.user.image}`}
                           className=""
                           sx={{ bgcolor: red[500] }}
-                          aria-label="recipe">
+                          aria-label="recipe"
+                        >
                           J
                         </Avatar>
                         <Typography className="p-2">
@@ -203,12 +210,14 @@ export default function RecipeReviewCard(props) {
                           }}
                           className="btn btn-info text-white text-decoration-nsone m-1"
                           data-bs-toggle="modal"
-                          data-bs-target={`#exampleModal${comment.id}`}>
+                          data-bs-target={`#exampleModal${comment.id}`}
+                        >
                           <p
                             style={{
                               marginBottom: "-4rem",
                             }}
-                            className="text-primary ">
+                            className="text-primary "
+                          >
                             Edit
                           </p>
                         </Link>
@@ -219,7 +228,8 @@ export default function RecipeReviewCard(props) {
                     <Typography
                       className="text-break p-2 rounded"
                       paragraph
-                      style={{ backgroundColor: "#E8EDEF" }}>
+                      style={{ backgroundColor: "#E8EDEF" }}
+                    >
                       {comment.content}
                       {comment.user.id == auth_user_id ? (
                         <>
@@ -228,27 +238,31 @@ export default function RecipeReviewCard(props) {
                             id={`exampleModal${comment.id}`}
                             tabindex="-1"
                             aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                            aria-hidden="true"
+                          >
                             <Box
                               component="form"
                               noValidate
                               onSubmit={(event) =>
                                 handleSubmit(event, comment.id)
                               }
-                              sx={{ mt: 3 }}>
+                              sx={{ mt: 3 }}
+                            >
                               <div className="modal-dialog">
                                 <div className="modal-content p-5">
                                   <div className="modal-header">
                                     <h1
                                       className="modal-title fs-5"
-                                      id="exampleModalLabel">
+                                      id="exampleModalLabel"
+                                    >
                                       Edit User info
                                     </h1>
                                     <button
                                       type="button"
                                       className="btn-close"
                                       data-bs-dismiss="modal"
-                                      aria-label="Close"></button>
+                                      aria-label="Close"
+                                    ></button>
                                   </div>
                                   <div className="modal-body">
                                     {/* <form onSubmit={handleSubmit}> */}
@@ -264,7 +278,8 @@ export default function RecipeReviewCard(props) {
                                           id="floatingTextarea2"
                                           style={{
                                             height: "100px",
-                                          }}>
+                                          }}
+                                        >
                                           {comment.content}
                                         </textarea>
                                         <label for="floatingTextarea2">
@@ -277,12 +292,14 @@ export default function RecipeReviewCard(props) {
                                     <button
                                       type="button"
                                       className="btn btn-secondary publishTourBtn"
-                                      data-bs-dismiss="modal">
+                                      data-bs-dismiss="modal"
+                                    >
                                       Close
                                     </button>
                                     <button
                                       type="submit"
-                                      className="btn btn-primary publishTourBtn">
+                                      className="btn btn-primary publishTourBtn"
+                                    >
                                       Submit
                                     </button>
                                   </div>
@@ -299,8 +316,12 @@ export default function RecipeReviewCard(props) {
                           color: "grey",
                           fontStyle: "italic",
                           fontSize: "12px",
-                        }}>
-                        {comment.created_at}
+                        }}
+                      >
+                        {format(
+                          new Date(comment.created_at),
+                          "dd/mm/yyyy hh:mm a"
+                        )}
                       </Typography>
                     </Typography>
                   </>

@@ -24,7 +24,7 @@ function RouteList() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/story:id" element={<Story />} />
+        <Route path="/story/:id" element={<Story />} />
       </Routes>
     </div>
   );

@@ -141,18 +141,11 @@ function Header() {
                         <Link to="/">Home</Link>
                       </li>
                       <li class="drop">
-                        <Link to="/stores">Stores</Link>
+                        <Link to="/stores">Stories</Link>
                       </li>
                       <li class="drop">
                         <NavLink to="/reviews">Reviews</NavLink>
                       </li>
-                      <li class="drop">
-                        <Link to="event-grid.html">Vidoes</Link>
-                      </li>
-                      <li class="drop">
-                        <Link to="#">Gaming</Link>
-                      </li>
-
                       <li class="drop">
                         <Link to="/about">about us</Link>
                       </li>
