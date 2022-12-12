@@ -30,6 +30,7 @@ function Header() {
         localStorage.removeItem("google-current-user");
         localStorage.removeItem("token");
         localStorage.removeItem("loginGoogle");
+        localStorage.removeItem("user");
         setAuth(false);
         navigate("/login");
       });
