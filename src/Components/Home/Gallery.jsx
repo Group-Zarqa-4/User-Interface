@@ -5,7 +5,13 @@ export default function Gallery() {
   const [books, setBooks] = useState(booksApi);
   return (
     <div>
-      <section class="junior__testimonial__area bg-image--2 section-padding--lg">
+      <section
+        class="junior__testimonial__area bg-image--2 section-padding--lg"
+        style={{
+          backgroundImage: `url("https://images-ext-1.discordapp.net/external/xFaOrgz2FBSm4R-ROt7nbxjTR9GgT8hMXv1T3Ifa3AU/%3Fformat%3D2500w/https/images.squarespace-cdn.com/content/v1/5762f76ef7e0ab85e7391707/1480692827460-K7WDGJIJW3J3DCBQ3FVN/ke17ZwdGBToddI8pDm48kBZlCHarXg5rhR-WqYZRt3sUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2didw2UtuhEgUY3oasE-eW3P9DQjHYvtjpyhPVsqDMMlPm7cT0R_dexc_UL_zbpz6JQ/image-asset.jpeg?width=1441&height=556")`,
+          height: "400px",
+        }}
+      >
         <div class="container">
           <div class="row">
             <div class="offset-lg-2 col-lg-8 col-md-12 col-sm-12">
@@ -95,11 +101,11 @@ export default function Gallery() {
           <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
               <div class="section__title text-center">
-                <h2 class="title__line">Our Gallery</h2>
+                <h2 class="title__line">Our Story</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunte magna aliquaet, consectetempora
-                  incidunt
+                  A variety of stories from different cultures just for you
+                  <br />
+                  Choose what suits you best and enjoy
                 </p>
               </div>
             </div>
@@ -151,13 +157,20 @@ export default function Gallery() {
         </div>
       </section>
 
-      <section class="jnr__blog_area section-padding--lg bg-image--3">
+      <section
+        class="jnr__blog_area section-padding--lg bg-image--3"
+        style={{
+          backgroundAttachment: "fixed",
+          opacity: 0.8,
+          backgroundImage: `url("https://images-ext-1.discordapp.net/external/I7HSXIMfU_ym5GHWZjk8tD1PW7FWC-QRn10jggSIhGE/https/www.herder.de/-/media/images/herder/themen/kindergarten-und-paedagogik/willkommen-im-kindergarten.jpg")`,
+        }}
+      >
         <div class="container">
           <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12">
               <div class="section__title text-center white--title">
-                <h2 class="title__line">Recent Blog</h2>
-                <p>
+                <h1 class="title__line dark text-light">Recent Blog</h1>
+                <p class="dark">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunte magna aliquaet, consectetempora
                   incidunt
@@ -169,7 +182,7 @@ export default function Gallery() {
             <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInLeft">
               <article class="blog">
                 <div class="blog__date">
-                  <span>Date : 10th November, 2017</span>
+                  <span>Date : 10th November, 2022</span>
                 </div>
                 <div class="blog__thumb">
                   <a href="blog-details.html">
@@ -206,7 +219,7 @@ export default function Gallery() {
             <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
               <article class="blog">
                 <div class="blog__date">
-                  <span>Date : 10th November, 2017</span>
+                  <span>Date : 10th November, 2022</span>
                 </div>
                 <div class="blog__thumb">
                   <a href="blog-details.html">
@@ -241,7 +254,7 @@ export default function Gallery() {
             <div class="col-lg-4 col-md-6 col-sm-12 wow fadeInRight">
               <article class="blog">
                 <div class="blog__date">
-                  <span>Date : 10th November, 2017</span>
+                  <span>Date : 10th November, 2022</span>
                 </div>
                 <div class="blog__thumb">
                   <a href="blog-details.html">
@@ -283,9 +296,8 @@ export default function Gallery() {
               <div class="section__title text-center">
                 <h2 class="title__line">Up Coming Event</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunte magna aliquaet, consectetempora
-                  incidunt
+                  Because you are the most beautiful part, we do not forget all
+                  the events related to children here
                 </p>
               </div>
             </div>
@@ -304,19 +316,20 @@ export default function Gallery() {
                     <a href="event-details.html">Todler Art Exhibition</a>
                   </h6>
                   <p>
-                    Lor error sit volupta item accusantim doloremque laudantium,
-                    toe aperiam, eaque ipsa quae ab illoe invenveritatis et
-                    quasi architecto beatae viliquam quaerat voluptatem.
+                    An exhibition for children of different ages that is
+                    organized by the Ministry of Education in schools and
+                    institutions. Its aim is to allow children to express
+                    themselves and their abilities through drawing.
                   </p>
                   <ul class="event__time">
                     <li>
-                      <i class="fa fa-home"></i>Childrens Club, Uttara, Dhaka
+                      <i class="fa fa-home"></i>Childrens Club,JORDAN,AMMAN
                     </li>
                     <li>
                       <i class="fa fa-clock-o"></i>10.00 am to 1.00 pm
                     </li>
                     <li>
-                      <i class="fa fa-calendar"></i>30th Dec, 2017
+                      <i class="fa fa-calendar"></i>30th Dec, 2022
                     </li>
                   </ul>
                 </div>
@@ -326,8 +339,8 @@ export default function Gallery() {
                     alt="shape ./assets/images"
                   />
                   <div class="enent__pub">
-                    <span class="time">21st </span>
-                    <span class="bate">Dec,2017</span>
+                    <span class="time">20st </span>
+                    <span class="bate">Nov,2022</span>
                   </div>
                 </div>
               </div>
@@ -346,19 +359,22 @@ export default function Gallery() {
                     <a href="event-details.html">Childrens Day Celebration</a>
                   </h6>
                   <p>
-                    Lor error sit volupta item accusantim doloremque laudantium,
-                    toe aperiam, eaque ipsa quae ab illoe invenveritatis et
-                    quasi architecto beatae viliquam quaerat voluptatem.
+                    Universal Children's Day is UNICEF's annual day to encourage
+                    children to act for the benefit of children. The voices of
+                    children and young people — preoccupied with a wide range of
+                    issues from climate change, education and mental health to
+                    ending racism and discrimination — are calling on adults to
+                    build a better future. On this occasion.
                   </p>
                   <ul class="event__time">
                     <li>
-                      <i class="fa fa-home"></i>Childrens Club, Uttara, Dhaka
+                      <i class="fa fa-home"></i>Childrens Club,JORDAN,AMMAN
                     </li>
                     <li>
                       <i class="fa fa-clock-o"></i>10.00 am to 1.00 pm
                     </li>
                     <li>
-                      <i class="fa fa-calendar"></i>30th Dec, 2017
+                      <i class="fa fa-calendar"></i>20th Nov, 2022
                     </li>
                   </ul>
                 </div>
@@ -368,8 +384,8 @@ export default function Gallery() {
                     alt="shape ./assets/images"
                   />
                   <div class="enent__pub">
-                    <span class="time">21st </span>
-                    <span class="bate">Dec,2017</span>
+                    <span class="time">20st </span>
+                    <span class="bate">Nov,2022</span>
                   </div>
                 </div>
               </div>

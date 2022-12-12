@@ -1,13 +1,13 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function GridCategories() {
   return (
     <div>
-      <section class="junior__service bg-image--1 section-padding--bottom section--padding--xlg--top">
+      <section class="junior__service  section-padding--bottom section--padding--xlg--top">
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="service bg--white border__color wow fadeInUp">
+              <div class="service  border__color wow fadeInUp">
                 <div class="service__icon">
                   <img
                     src="./assets/images/shape/sm-icon/1.png"
@@ -16,19 +16,20 @@ export default function GridCategories() {
                 </div>
                 <div class="service__details">
                   <h6>
-                    <a href="service.html">Stores</a>
+                    <Link to="/stores">Stores</Link>
                   </h6>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor am quaerat voluptatem.
+                    More than one story and from different cultures and for
+                    different ages to suit your child
                   </p>
                   <div class="service__btn">
-                    <a
+                    <Link
+                      to="/stores"
                       class="dcare__btn btn__gray hover--theme min__height-btn"
-                      href="google.com"
                     >
+                      {" "}
                       Read More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -50,8 +51,8 @@ export default function GridCategories() {
                     <a href="service.html">Videos</a>
                   </h6>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor am quaerat voluptatem.
+                    Educational videos for children that help them build values
+                    and ideas
                   </p>
                   <div class="service__btn">
                     <a
@@ -78,19 +79,20 @@ export default function GridCategories() {
                 </div>
                 <div class="service__details">
                   <h6>
-                    <a href="service.html">Creative Lesson</a>
+                    <a href="service.html">Creative learning</a>
                   </h6>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor am quaerat voluptatem.
+                    We help children create the best ways and ideas to learn in
+                    an innovative way{" "}
                   </p>
                   <div class="service__btn">
-                    <a
+                    <Link
+                      to="/Contact"
                       class="dcare__btn btn__gray hover--theme min__height-btn"
-                      href="google.com"
                     >
+                      {" "}
                       Read More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -109,11 +111,11 @@ export default function GridCategories() {
                 </div>
                 <div class="service__details">
                   <h6>
-                    <a href="service.html">Yoga Class</a>
+                    <a href="">support</a>
                   </h6>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor am quaerat voluptatem.
+                    They are available all the time to serve customers and
+                    provide technical support
                   </p>
                   <div class="service__btn">
                     <a

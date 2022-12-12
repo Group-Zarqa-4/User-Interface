@@ -14,6 +14,7 @@ export default function Logout(props) {
       axios.post("/api/logout", token).then((response) => {
         console.log(response.data.message);
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         setAuth(false);
         navigate("/login");
       });
