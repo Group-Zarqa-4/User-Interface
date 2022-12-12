@@ -1,6 +1,26 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const contact = {
+      name: name,
+      email: email,
+      content: content,
+    };
+
+    axios.post("/api/contact", contact).then((response) => {
+      console.log(response.data.message);
+      setName("");
+      setEmail("");
+      setContent("");
+    });
+  };
   return (
     <div>
       <div class="ht__bradcaump__area">
@@ -163,18 +183,29 @@ export default function Contact() {
           <div class="row mt--80">
             <div class="col-lg-12">
               <div class="contact-form-wrap">
-                <form id="contact-form" action="mail.php" method="post">
+                <form id="contact-form" onSubmit={handleSubmit}>
                   <div class="single-contact-form name">
-                    <input type="text" name="name" placeholder="Your Nme*" />
-                    <input type="email" name="email" placeholder="Mail*" />
-                  </div>
-                  <div class="single-contact-form subject">
-                    <input type="text" name="subject" placeholder="Subject*" />
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your Nme*"
+                      value={name}
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Mail*"
+                      value={email}
+                    />
                   </div>
                   <div class="single-contact-form message">
                     <textarea
-                      name="message"
+                      name="content"
+                      onChange={(e) => setContent(e.target.value)}
                       placeholder="Type your message here.."
+                      value={content}
                     ></textarea>
                   </div>
                   <div class="contact-btn">
@@ -184,9 +215,9 @@ export default function Contact() {
                   </div>
                 </form>
               </div>
-              <div class="form-output">
+              {/* <div class="form-output">
                 <p class="form-messege"></p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

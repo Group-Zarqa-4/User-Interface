@@ -48,8 +48,8 @@ export default function Login() {
       const token = response.data.token;
       const id = response.data.userId;
       localStorage.setItem("token", token);
-      const user = response.data.user.id;
-      localStorage.setItem("user", user);
+      const user = response.data.user;
+      localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("userId", id);
       setLoginGoogle(true);
       navigate("/");
@@ -77,7 +77,7 @@ export default function Login() {
         const token = response.data.token;
         const user = response.data.user;
         localStorage.setItem("token", token);
-        localStorage.setItem("user", user);
+        localStorage.setItem("user", JSON.stringify(user));
         setAuth(true);
         navigate("/");
       });

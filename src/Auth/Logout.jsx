@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
@@ -22,8 +22,17 @@ export default function Logout(props) {
     });
   };
   return (
-    <button className={props.class} onClick={logoutUser}>
-      Logout
-    </button>
+    <>
+      <a
+        class="login-trigger"
+        href="#"
+        onClick={((e) => e.preventDefault(), logoutUser)}
+      >
+        Logout
+      </a>
+    </>
+    // <button className={props.class} onClick={logoutUser}>
+    //   Logout
+    // </button>
   );
 }

@@ -8,6 +8,7 @@ import Home from "./Home";
 import Profile from "./Profile/Profile";
 import Reviews from "./Reviews";
 import Stores from "./Stores";
+import Story from "./Story";
 
 function RouteList() {
   return (
@@ -23,6 +24,7 @@ function RouteList() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/story:id" element={<Story />} />
       </Routes>
     </div>
   );
