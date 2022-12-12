@@ -8,6 +8,8 @@ export default function Logout(props) {
   const { setAuth } = useContext(AuthContext);
   const logoutUser = () => {
     const token = localStorage.getItem("token");
+    const axiosAuth = "Bearer " + token;
+    axios.defaults.headers.common["Authorization"] = axiosAuth;
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.post("/api/logout", token).then((response) => {
         console.log(response.data.message);

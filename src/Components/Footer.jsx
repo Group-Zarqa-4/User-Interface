@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -84,7 +85,7 @@ function Footer() {
                             </a>
                           </h6>
                           <span>
-                            <i class="fa fa-calendar"></i>30th Dec, 2017
+                            <i class="fa fa-calendar"></i>30th Dec, 2022
                           </span>
                         </div>
                       </div>
@@ -106,7 +107,7 @@ function Footer() {
                             </a>
                           </h6>
                           <span>
-                            <i class="fa fa-calendar"></i>21th Dec, 2017
+                            <i class="fa fa-calendar"></i>21th Dec, 2022
                           </span>
                         </div>
                       </div>
@@ -128,7 +129,7 @@ function Footer() {
                             </a>
                           </h6>
                           <span>
-                            <i class="fa fa-calendar"></i>10th Dec, 2017
+                            <i class="fa fa-calendar"></i>10th Dec, 2022
                           </span>
                         </div>
                       </div>
@@ -144,65 +145,25 @@ function Footer() {
                     <div class="ftr__latest__post">
                       <ul class="ftr__catrgory">
                         <li>
-                          <a href="#">Stores</a>
+                          <Link to="/stores">Stores</Link>
                         </li>
                         <li>
-                          <a href="#">Videos</a>
+                          <Link to="#">Gaming</Link>
+                        </li>
+                        <li class="drop">
+                          <Link to="#">post</Link>
                         </li>
                         <li>
-                          <a href=".">Shop</a>
+                          <Link to="/about">about</Link>
                         </li>
                         <li>
-                          <a href="#">About</a>
-                        </li>
-                        <li>
-                          <a href="#">Contact</a>
+                          <Link to="/contact">Contact</Link>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* <div class="footer__widget">
-                  <h4>Our Location</h4>
-                  <div class="footer__innner">
-                    <div class="dcare__twit__wrap">
-                      <div class="dcare__twit d-flex">
-
-                        <div class="dcare__twit__details">
-
-                          <p>
-                            You can visit our current website for more information or to see the website of our services .
-                          </p>
-                          <br></br>
-                          <span class="dcare__twit__details">
-                            <h4>Phone Number</h4>
-                            <p>+962770000000</p>
-                            <p> +962770077777</p>
-                          </span>
-
-                        </div>
-                      </div>
-                      <br></br>
-
-                      <div class="dcare__twit d-flex">
-                        <div class="dcare__twit__icon">
-
-                        </div>
-                        <div>
-                          <h4>E-Mail Address</h4>
-                          <span>
-                            <p>
-                              junior.admin@email.com
-                            </p>
-                            <p>JuniorKids.@yahoo.com</p>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
 
               <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
                 <div class="footer__widget">
@@ -264,12 +225,7 @@ function Footer() {
             <div class="cartbox__items">
               <div class="cartbox__item">
                 <div class="cartbox__item__thumb">
-                  <a href="product-details.html">
-                    {/* <img
-                      src="./assets/images/product/sm-pro/1.jpg"
-                      alt="small thumbnail"
-                    /> */}
-                  </a>
+                  <a href="product-details.html"></a>
                 </div>
                 <div class="cartbox__item__content">
                   <h5>
@@ -288,12 +244,7 @@ function Footer() {
               </div>
               <div class="cartbox__item">
                 <div class="cartbox__item__thumb">
-                  <a href="product-details.html">
-                    {/* <img
-                      src="./assets/images/product/sm-pro/2.jpg"
-                      alt="small thumbnail"
-                    /> */}
-                  </a>
+                  <a href="product-details.html"></a>
                 </div>
                 <div class="cartbox__item__content">
                   <h5>

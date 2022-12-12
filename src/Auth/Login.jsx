@@ -39,6 +39,7 @@ export default function Login() {
       "google-current-user",
       JSON.stringify(res.profileObj.googleId)
     );
+    localStorage.getItem("loginGoogle", JSON.stringify(true));
     setAuth(true);
     // console.log(profile.email);
     // return;
@@ -70,8 +71,9 @@ export default function Login() {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.post("/api/login", auth_login).then((response) => {
         const token = response.data.token;
+        const user = response.data.user;
         localStorage.setItem("token", token);
-        console.log(response.data.message);
+        localStorage.setItem("user", user);
         setAuth(true);
         navigate("/");
       });

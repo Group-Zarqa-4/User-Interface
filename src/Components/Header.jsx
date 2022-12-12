@@ -7,20 +7,29 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 function Header() {
+  const user = localStorage.getItem("user")
+    ? localStorage.getItem("user")
+    : JSON.parse(localStorage.getItem("google-user"));
+  const checkGoogle = localStorage.getItem("google-current-user");
+
   const navigate = useNavigate();
   const { clientId } = AuthContext;
   const { auth, setAuth } = useContext(AuthContext);
   // const { profile, setProfile } = useContext(AuthContext);
   const { loginGoogle, setLoginGoogle } = useContext(AuthContext);
+  const isLoginWithGoogle = localStorage.getItem("loginGoogle");
 
   const logOut = () => {
     const token = localStorage.getItem("token");
+    const axiosAuth = "Bearer " + token;
+    axios.defaults.headers.common["Authorization"] = axiosAuth;
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.post("/api/logout", token).then((response) => {
         console.log(response.data.message);
         localStorage.removeItem("google-user");
         localStorage.removeItem("google-current-user");
         localStorage.removeItem("token");
+        localStorage.removeItem("loginGoogle");
         setAuth(false);
         navigate("/login");
       });
@@ -28,8 +37,6 @@ function Header() {
     // localStorage.removeItem("auth");
 
     // const token = localStorage.getItem("token");
-    // const axiosAuth = "Bearer " + token;
-    // axios.defaults.headers.common["Authorization"] = axiosAuth;
     // axios.get("/sanctum/csrf-cookie").then((response) => {
     //   axios.post("/api/logout", token).then((response) => {
     //     console.log(response);
@@ -45,9 +52,8 @@ function Header() {
 
   // check to handle login with google or normal login
   const checkLoginWithGoogle = () => {
-    if (!loginGoogle) {
-      return <Logout class="accountbox-trigger btn btn-success" />;
-    } else {
+    if (checkGoogle) {
+      // return <Logout class="accountbox-trigger btn btn-success" />;
       return (
         <GoogleLogout
           clientId={clientId}
@@ -55,6 +61,15 @@ function Header() {
           onLogoutSuccess={logOut}
         />
       );
+    } else {
+      return <Logout class="accountbox-trigger btn btn-success" />;
+      // return (
+      //   <GoogleLogout
+      //     clientId={clientId}
+      //     buttonText="Log out"
+      //     onLogoutSuccess={logOut}
+      //   />
+      // );
     }
   };
 
@@ -74,7 +89,7 @@ function Header() {
                     <li>
                       <i class="fa fa-phone"></i>
                       <span>Contact Now :</span>
-                      <a href="#">+003457289</a>
+                      <a href="#">+9627770077007</a>
                     </li>
                   </ul>
                 </div>
@@ -82,15 +97,15 @@ function Header() {
               <div class="col-md-5 col-lg-6 col-sm-12">
                 <div class="jun__header__top__right">
                   <ul class="accounting d-flex justify-content-lg-end justify-content-md-end justify-content-start align-items-center">
-                    {auth ? (
-                      checkLoginWithGoogle()
-                    ) : (
-                      <li>
-                        <Link class="login-trigger" to="/login">
-                          Login
-                        </Link>
-                      </li>
-                    )}
+                    <li>
+                      {user || auth ? (
+                        checkLoginWithGoogle()
+                      ) : (
+                        <a class="login-trigger" href="#">
+                          <Link to="/login">Login</Link>
+                        </a>
+                      )}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -122,11 +137,12 @@ function Header() {
                         <Link to="/stores">Stores</Link>
                       </li>
                       <li class="drop">
-                        <Link to="event-grid.html">Vidoes</Link>
+                        <Link to="#">Post</Link>
                       </li>
                       <li class="drop">
-                        <Link to="shop-grid.html">Shop</Link>{" "}
+                        <Link to="#">Gaming</Link>
                       </li>
+
                       <li class="drop">
                         <Link to="/about">about us</Link>
                       </li>
@@ -137,14 +153,17 @@ function Header() {
                   </nav>
                 </div>
               </div>
-              <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
+
+              {/* use this part for profile */}
+
+              {/* <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
                 <div class="shopbox d-flex justify-content-end align-items-center">
                   <a class="minicart-trigger" href="#">
                     <i class="fa fa-shopping-basket"></i>
                   </a>
                   <span>03</span>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div class="mobile-menu d-block d-lg-none">
               <div class="logo">
@@ -152,13 +171,59 @@ function Header() {
                   <img src="./assets/images/logo/junior.png" alt="logo" />
                 </a>
               </div>
-              <a class="minicart-trigger" href="#">
-                <i class="fa fa-shopping-basket"></i>
-              </a>
+              <a class="minicart-trigger" href="#"></a>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Modal Login */}
+      <div class="login-wrapper">
+        <div class="accountbox">
+          <div class="accountbox__inner">
+            <h4>Login to Continue</h4>
+            <div class="accountbox__login">
+              <form action="google.com">
+                <div class="single-input">
+                  <input type="email" placeholder="E-mail" />
+                </div>
+                <div class="single-input">
+                  <input type="password" placeholder="Password" />
+                </div>
+                <div class="single-input text-center">
+                  <button type="submit" class="sign__btn">
+                    SUBMIT
+                  </button>
+                </div>
+                <div class="accountbox-login__others text-center">
+                  <ul class="dacre__social__link d-flex justify-content-center">
+                    <li class="facebook">
+                      <a target="_blank" href="https://www.facebook.com/">
+                        <span class="ti-facebook"></span>
+                      </a>
+                    </li>
+                    <li class="twitter">
+                      <a target="_blank" href="https://twitter.com/">
+                        <span class="ti-twitter"></span>
+                      </a>
+                    </li>
+                    <li class="pinterest">
+                      <a target="_blank" href="google.com">
+                        <span class="ti-google"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </form>
+            </div>
+            <span class="accountbox-close-button">
+              <i class="zmdi zmdi-close"></i>
+            </span>
+          </div>
+          <h3>Have an account ? Login Fast</h3>
+        </div>
+      </div>
+      {/* Modal Login */}
     </div>
   );
 }

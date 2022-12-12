@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -8,6 +9,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [password_confirmation, setPassword_Confirmation] = useState("");
   const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
 
   const addUser = (e) => {
     e.preventDefault();
@@ -23,7 +25,10 @@ export default function Register() {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.post("/api/register", registerAccount).then((response) => {
         const token = response.data.token;
+        const user = response.data.user;
         localStorage.setItem("token", token);
+        localStorage.setItem("user", user);
+        setAuth(true);
         navigate("/");
       });
     });
