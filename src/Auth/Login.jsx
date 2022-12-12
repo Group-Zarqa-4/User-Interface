@@ -39,18 +39,17 @@ export default function Login() {
       "google-current-user",
       JSON.stringify(res.profileObj.googleId)
     );
-    localStorage.getItem("loginGoogle", JSON.stringify(true));
     setAuth(true);
     // console.log(profile.email);
     // return;
     axios.post("/api/loginGoogle", res.profileObj).then((response) => {
       console.log(response.data);
       const token = response.data.token;
-      const id = response.data.userId;
       localStorage.setItem("token", token);
       const user = response.data.user.id;
       localStorage.setItem("user", user);
-      localStorage.setItem("userId", id);
+      localStorage.setItem("userId", response.data.userId);
+
       setLoginGoogle(true);
       navigate("/");
     });
@@ -75,9 +74,8 @@ export default function Login() {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.post("/api/login", auth_login).then((response) => {
         const token = response.data.token;
-        const user = response.data.user;
         localStorage.setItem("token", token);
-        localStorage.setItem("user", user);
+        console.log(response.data.message);
         setAuth(true);
         navigate("/");
       });
@@ -109,8 +107,7 @@ export default function Login() {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form3Example3c"
-                            >
+                              htmlFor="form3Example3c">
                               Your Email
                             </label>
                           </div>
@@ -127,8 +124,7 @@ export default function Login() {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form3Example4c"
-                            >
+                              htmlFor="form3Example4c">
                               Password
                             </label>
                           </div>
@@ -136,8 +132,7 @@ export default function Login() {
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="submit"
-                            className="btn btn-primary btn-lg"
-                          >
+                            className="btn btn-primary btn-lg">
                             Login
                           </button>
                         </div>

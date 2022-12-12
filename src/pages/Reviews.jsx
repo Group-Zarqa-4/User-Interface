@@ -23,7 +23,7 @@ function Reviews() {
   return (
     <div className="m-5 p-5">
       {tokens && <AddPosts />}
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap flex-column justify-content-center align-items-center">
         {allPosts?.map((post) => {
           return (
             <div className="p-3">

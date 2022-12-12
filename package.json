@@ -22,11 +22,13 @@
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.7.1",
+    "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "redux": "^4.2.0",
     "snpm": "^0.1.1",
+    "styled-components": "^5.3.6",
     "sweetalert2": "^11.0.11",
     "web-vitals": "^2.1.4"
   },
