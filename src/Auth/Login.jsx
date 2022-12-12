@@ -43,9 +43,11 @@ export default function Login() {
     // console.log(profile.email);
     // return;
     axios.post("/api/loginGoogle", res.profileObj).then((response) => {
+      console.log(response.data);
       const token = response.data.token;
       localStorage.setItem("token", token);
-      console.log(response.data);
+      const user = response.data.user.id;
+      localStorage.setItem("user", user);
       setLoginGoogle(true);
       navigate("/");
     });
@@ -103,8 +105,7 @@ export default function Login() {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form3Example3c"
-                            >
+                              htmlFor="form3Example3c">
                               Your Email
                             </label>
                           </div>
@@ -121,8 +122,7 @@ export default function Login() {
                             />
                             <label
                               className="form-label"
-                              htmlFor="form3Example4c"
-                            >
+                              htmlFor="form3Example4c">
                               Password
                             </label>
                           </div>
@@ -130,8 +130,7 @@ export default function Login() {
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="submit"
-                            className="btn btn-primary btn-lg"
-                          >
+                            className="btn btn-primary btn-lg">
                             Login
                           </button>
                         </div>
