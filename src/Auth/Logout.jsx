@@ -15,6 +15,7 @@ export default function Logout(props) {
         console.log(response.data.message);
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        localStorage.removeItem("userId");
         setAuth(false);
         navigate("/login");
       });
