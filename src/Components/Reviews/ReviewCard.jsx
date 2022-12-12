@@ -36,7 +36,7 @@ export default function RecipeReviewCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [newComment, setNewComment] = React.useState("");
   const [checkComments, setCheckComments] = React.useState(false);
-  const auth_user_id = localStorage.getItem("user");
+  const auth_user_id = localStorage.getItem("userId");
   const [comments, setComments] = React.useState();
   useEffect(() => {
     axios.get(`/api/comments/${props.post.post.id}`).then((res) => {
@@ -74,7 +74,8 @@ export default function RecipeReviewCard(props) {
           <Avatar
             src={`${props.post.post.user.image}`}
             sx={{ bgcolor: red[500] }}
-            aria-label="recipe">
+            aria-label="recipe"
+          >
             R
           </Avatar>
         }
@@ -103,7 +104,8 @@ export default function RecipeReviewCard(props) {
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more">
+          aria-label="show more"
+        >
           <ExpandMoreIcon />
         </ExpandMore>
         <Typography style={{ cursor: "pointer" }} onClick={handleExpandClick}>
@@ -118,7 +120,8 @@ export default function RecipeReviewCard(props) {
               onSubmit={(e) =>
                 handleCommentClick(props.post.post.id, auth_user_id, e)
               }
-              component="form">
+              component="form"
+            >
               <TextField
                 id="outlined-basic"
                 label="Add Comment"
@@ -129,7 +132,8 @@ export default function RecipeReviewCard(props) {
               <button
                 type="submit"
                 className=" btn btn-primary p-3 ms-2 rounded"
-                style={{ display: "inline" }}>
+                style={{ display: "inline" }}
+              >
                 Send
                 <ArrowForwardIosIcon
                   style={{ color: "white", hover: "pointer" }}
@@ -146,7 +150,8 @@ export default function RecipeReviewCard(props) {
                     src={`${comment.image}`}
                     className=""
                     sx={{ bgcolor: red[500] }}
-                    aria-label="recipe">
+                    aria-label="recipe"
+                  >
                     J
                   </Avatar>
                   <Typography className="p-2">{comment.name}</Typography>
@@ -154,14 +159,16 @@ export default function RecipeReviewCard(props) {
                 <Typography
                   className="text-break p-2 rounded"
                   paragraph
-                  style={{ backgroundColor: "#E8EDEF" }}>
+                  style={{ backgroundColor: "#E8EDEF" }}
+                >
                   {comment.content}
                   <Typography
                     style={{
                       color: "grey",
                       fontStyle: "italic",
                       fontSize: "12px",
-                    }}>
+                    }}
+                  >
                     {comment.date}
                   </Typography>
                 </Typography>

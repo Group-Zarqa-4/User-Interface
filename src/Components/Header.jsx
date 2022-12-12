@@ -7,13 +7,18 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 function Header() {
+  // for login with google, as I readed client_id is the important key
+  const clientId =
+    "111242181519-tan7ba30id91j585qai70aaeht32lie9.apps.googleusercontent.com";
+  const secretId = "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";
+
   const user = localStorage.getItem("user")
     ? localStorage.getItem("user")
     : JSON.parse(localStorage.getItem("google-user"));
   const checkGoogle = localStorage.getItem("google-current-user");
 
   const navigate = useNavigate();
-  const { clientId } = AuthContext;
+  // const { clientId } = AuthContext;
   const { auth, setAuth } = useContext(AuthContext);
   // const { profile, setProfile } = useContext(AuthContext);
   const { loginGoogle, setLoginGoogle } = useContext(AuthContext);

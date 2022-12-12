@@ -8,7 +8,7 @@ function AddPosts() {
   const [review, setReview] = useState("");
   const [user, setUser] = useState("");
   const [useData, setUserData] = useState({});
-  const auth_user_id = localStorage.getItem("user");
+  const auth_user_id = localStorage.getItem("userId");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +32,8 @@ function AddPosts() {
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
+        data-bs-target="#exampleModal"
+      >
         Add Review
       </button>
       <Box
@@ -40,13 +41,15 @@ function AddPosts() {
         component="form"
         noValidate
         onSubmit={(e) => handleSubmit(e)}
-        sx={{ mt: 3 }}>
+        sx={{ mt: 3 }}
+      >
         <div
           className="modal fade"
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
+          aria-hidden="true"
+        >
           <div className="modal-dialog 	modal-lg ">
             <div className="modal-content">
               <div className="modal-header">
@@ -57,7 +60,8 @@ function AddPosts() {
                   type="button"
                   className=" btn btn-close fs-4"
                   data-bs-dismiss="modal"
-                  aria-label="Close">
+                  aria-label="Close"
+                >
                   <HighlightOffIcon />
                 </button>
               </div>
@@ -73,13 +77,15 @@ function AddPosts() {
                       type="text"
                       onChange={(e) => setReview(e.target.value)}
                       className="form-control"
-                      id="textarea"></textarea>
+                      id="textarea"
+                    ></textarea>
                   </div>
                   <div className="modal-footer">
                     <button
                       type="button"
                       className="btn btn-secondary"
-                      data-bs-dismiss="modal">
+                      data-bs-dismiss="modal"
+                    >
                       Close
                     </button>
                     <button type="submit" className="btn btn-primary">

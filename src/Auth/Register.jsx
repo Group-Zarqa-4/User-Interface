@@ -26,8 +26,10 @@ export default function Register() {
       axios.post("/api/register", registerAccount).then((response) => {
         const token = response.data.token;
         const user = response.data.user;
+        const id = response.data.userId;
         localStorage.setItem("token", token);
         localStorage.setItem("user", user);
+        localStorage.setItem("userId", id);
         setAuth(true);
         navigate("/");
       });
