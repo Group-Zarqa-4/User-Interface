@@ -5,6 +5,7 @@ import Register from "../Auth/Register";
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
+import Premium from "./Premium";
 import Profile from "./Profile/Profile";
 import Reviews from "./Reviews";
 import Stores from "./Stores";
@@ -23,6 +24,7 @@ function RouteList() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/premium/:id" element={<Premium />} />
         <Route path="/register" element={<Register />} />
         <Route path="/story/:id" element={<Story />} />
       </Routes>
