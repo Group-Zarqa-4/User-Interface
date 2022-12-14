@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import booksApi from "../booksApi.json";
-
+import { useNavigate } from "react-router-dom";
 import HTMLFlipBook from "react-pageflip";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 const Page = React.forwardRef((props, ref) => {
   return (
     <div className="page" ref={ref}>
@@ -18,12 +17,33 @@ const Page = React.forwardRef((props, ref) => {
 
 export default function Story(props) {
   const [book, setBook] = useState();
+  const navigate = useNavigate();
+  const auth_user_id = localStorage.getItem("userId");
+  const [userPremium, setUserPremium] = useState();
+
   const { id } = useParams();
   useEffect(() => {
     axios.get(`/api/stories/${id}`).then((response) => {
       setBook(response.data.story);
     });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/users/${auth_user_id}`)
+      .then((response) => {
+        console.log(response);
+        setUserPremium(response.data.is_premium);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  if (userPremium) {
+    if (userPremium != 1 && book.is_premium == 1) {
+      navigate(`/premium/${id}`);
+    }
+  }
   return (
     <div className="center my-5">
       {/* {booksApi[0].map((book, index) => { */}

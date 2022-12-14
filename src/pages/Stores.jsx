@@ -39,8 +39,7 @@ export default function Stores() {
           <div className="col-lg-4 col-md-2 col-sm-6 col-12">
             <div
               className="product--2 product__grid"
-              style={{ border: "5px solid black" }}
-            >
+              style={{ border: "5px solid black" }}>
               <div className="product__imges">
                 <Link to={`/story/${book.id}`}>
                   <img
@@ -80,8 +79,7 @@ export default function Stores() {
           backgroundImage: `url("https://i.pinimg.com/564x/be/79/63/be79636d2f4363aacc6667722020e149.jpg")`,
           height: "700px",
           // opacity: 0.7,
-        }}
-      >
+        }}>
         <div class="container">
           <div class="row">
             <div class="col-lg-12">

@@ -152,6 +152,9 @@ function Header() {
                       <li>
                         <Link to="/contact">Contact</Link>
                       </li>
+                      <li>
+                        <Link to="/premium/pre">Premium</Link>
+                      </li>
                     </ul>
                   </nav>
                 </div>
